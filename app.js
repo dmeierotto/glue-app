@@ -4,7 +4,8 @@
  */
 
 var express = require('express');
-
+require('express-resource');
+    
 var app = express();
 
 // Configuration
@@ -41,6 +42,13 @@ app.get('/about', function(req, res){
     title: 'About'
   });
 });
+
+app.get('/adherence', function(req, res){
+  res.render('adherence', {
+    title: 'About Adherence'
+  });
+});
+
 
 app.get('/contact', function(req, res){
   res.render('contact', {

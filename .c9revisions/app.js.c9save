@@ -21,3 +21,6 @@
 {"ts":1350741141573,"patch":[[{"diffs":[[0,"p = "],[-1,"module.exports = express.createServer"],[1,"express"],[0,"();\n"]],"start1":75,"start2":75,"length1":45,"length2":15}]],"length":982,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1350741527074,"patch":[[{"diffs":[[0,"', 'jade');\n"],[1,"  app.set('view options', { layout: false });.  \n"],[0,"  app.use(ex"]],"start1":199,"start2":199,"length1":24,"length2":73}]],"length":1031,"saved":false}
 {"ts":1350741530455,"patch":[[{"diffs":[[0," });"],[-1,". "],[0," \n  "]],"start1":252,"start2":252,"length1":10,"length2":8}]],"length":1029,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1350743657414,"patch":[[{"diffs":[[0,"press');"],[1,"\nrequire('express-resource');"],[0,"\n\nvar ap"]],"start1":59,"start2":59,"length1":16,"length2":45}]],"length":1058,"saved":false}
+{"ts":1350814936851,"patch":[[{"diffs":[[0,"urce');\n"],[1,"    "],[0,"\nvar app"]],"start1":89,"start2":89,"length1":16,"length2":20}]],"length":1062,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1351279531892,"patch":[[{"diffs":[[0,"out'\n  });\n});\n\n"],[1,"app.get('/adherence', function(req, res){\n  res.render('adherence', {\n    title: 'About Adherence'\n  });\n});\n\n\n"],[0,"app.get('/contac"]],"start1":889,"start2":889,"length1":32,"length2":143}]],"length":1173,"saved":false}
