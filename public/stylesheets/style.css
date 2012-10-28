@@ -81,9 +81,9 @@ section {
 /* Set up document
 -----------------------------------------------------------------------------*/
 body {
-  font: 70%/1.5 Segoe UI, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
+  font: 80%/1.6 "PT Sans", "Segoe UI", "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
   text-align: center;
-  background: #000;
+  background: #fff;
 }
 #wrapper {
   width: 920px;
@@ -208,9 +208,6 @@ acronym {
 }
 /* Header
 -----------------------------------------------------------------------------*/
-header {
-  background: #f00060;
-}
 header nav {
   width: 960px;
   text-align: right;
@@ -252,7 +249,13 @@ footer {
 footer ul {
   list-style: none;
 }
-label {
+.contact-form label {
   display: block;
   width: 200px;
+}
+#survey p {
+  margin-bottom: 0px;
+}
+#survey .question {
+  margin-bottom: 1.5em;
 }

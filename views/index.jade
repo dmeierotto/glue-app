@@ -4,28 +4,36 @@ block content
     h1  Would you like to see better patient adherence?
     section.css-table
       section.two-column
+        section.cell(style="width: 33.33333%")
+          h2 thinkAdherence
+          h4 Discuss what matters.
+        section.cell(style="width: 66.66666%")
+          p 
+            | Research suggests that than 50% of patients do not fully adhere to prescribed regimen.
+            | thinkAdherence can help you identify which patients are unlikely to adhere and provide you with ways to improve adherence.
+            | Since low adherening patients tend to have high cancellation rates, by improving the aherence you can lower cancellations while improving patient health and satisfaction.            
+
+    section(style="margin-top:60px")
+      section
         section.cell
-          h2 Use Glue
-          p It is likely that more than 50% of your patients do not fully adhere to your prescribed regimen.
-          p Glue can help you predict which patients are unlikely to adhere and provide you with ways to improve adherence.
-          p Low adherening patients tend to have high cancellation rates.
-          p By improving the aherence you can lower cancellations and improve patient health and satisfaction.
-        section.cell
-          h2 How does it work?
-          p Glue provides your patients with a simple 20 question survey that they can fill out in 5 minutes in the waiting room or they can fill it out online before the visit.
-          p The survey measures their belief in the threat that the health problem poses and thier ability to cope with the health problem
-          p These dimensions tell us how well the patient will adhere so that glue can provide you with a objective measure of patient adherence
-          p You can address patient beliefs during the visit, focusing on moving the patient to a higher adherence level
-    section.css-table
+            h2 How does it work?
+            p 
+                |thinkAdherence provides your patients with a simple 20 question survey that they can fill out in 5 minutes.
+                |The survey measures patient belief in the health threat and thier ability to cope.
+                |thinkAdherence provides you with a simple measurement of patient adherence based on the survey.
+                |You can address patient beliefs during the visit based on the measure, focusing on moving the patient to a higher adherence level. <br/>
+                a(href="#") Keep reading
+    section.css-table(style="margin-top:60px")
       section.three-column
         section.cell
           h3 Learn More
-          p Sign up here to receive more information about Glue
-            input#signup[type=text]
+          p Sign up here to receive more information about thinkAdherence
+            input#signup(style="width: 150px; margin-right: 10px;")  
+            a(href="#") sign up
         section.cell
-          h3 Take the adherence survey
+          h3 Take the thinkAdherence survey
           p See how your adherence rating looks like compared to others who have taken the 
-            a(href='#') test
+            a(href='/survey') survey
         section.cell
           h3 Developed by Motto Labs
           p Motto Labs is focused on increasing patient adherence

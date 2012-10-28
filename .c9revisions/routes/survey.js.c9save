@@ -1,0 +1,4 @@
+{"ts":1351459205494,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"var questions = require('../models/questions.js')\r\n\r\nexports.index = function(req, res){\r\n  res.render('index', { ququestions: questions })\r\n};"]],"start1":0,"start2":0,"length1":0,"length2":143}]],"length":143}
+{"contributors":[],"silentsave":false,"ts":1351459472051,"patch":[[{"diffs":[[0,"dex', { "],[-1,"qu"],[0,"question"]],"start1":106,"start2":106,"length1":18,"length2":16}]],"length":141,"saved":false}
+{"ts":1351459563091,"patch":[[{"diffs":[[0,"render('"],[-1,"index"],[1,"survey"],[0,"', { que"]],"start1":96,"start2":96,"length1":21,"length2":22}]],"length":142,"saved":false}
+{"ts":1351459713935,"patch":[[{"diffs":[[0,"vey'"],[-1,", { questions: questions }"],[0,")\r\n};"],[1,"\r\n"]],"start1":107,"start2":107,"length1":35,"length2":11}]],"length":118,"saved":false}

@@ -1,0 +1,18 @@
+extends layout
+
+
+
+block content
+    
+    h1 This is the survey  
+
+    div#survey
+        each question in questions
+            div.question
+                p= question.Description
+                div
+                    each answer in question.Answers    
+                        label
+                            input(type="radio", name="question_#{question.Number}", id="question_#{question.Number}_#{answer.value}")
+                            = answer.label
+                    

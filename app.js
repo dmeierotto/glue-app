@@ -4,6 +4,7 @@
  */
 
 var express = require('express');
+var models = require("./models/questions.js");
 require('express-resource');
     
 var app = express();
@@ -55,6 +56,13 @@ app.get('/contact', function(req, res){
     title: 'Contact'
   });
 });
+
+app.get('/survey', function(req, res){
+  res.render('survey', {
+    title: 'Survey', questions: models.questions
+  });
+});
+
 
 //start the http server
 app.listen(process.env.C9_PORT);
