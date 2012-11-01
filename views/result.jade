@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    
+    h1 This is the survey  
+
+    p= threatScore
+    
+    p= efficacyScore
+
+    div#chart_div
+
+    script(type="text/javascript", src="https://www.google.com/jsapi")
+
+    script
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', { 'packages': ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+
+            var eScore = #{efficacyScore};
+            var vScore = #{threatScore};
+
+            // Create the data table.
+            var data = new google.visualization.arrayToDataTable([
+                ['efficacy', 'vulnerability'],
+                [eScore, vScore]
+            ]);
+
+            // Set chart options
+            var options = {
+                'title': 'Adherence Rating',
+                width: 400,
+                height: 400,
+                chartArea: { width: 300, height: 300},
+                hAxis: { title: 'efficacy', minValue: 0, maxValue: 100, gridlines: { count: 3 } },
+                vAxis: { title: 'vulnerability', minValue: 0, maxValue: 100, gridlines: { count: 3 } },
+                legend: 'none'
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }

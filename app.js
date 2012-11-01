@@ -6,6 +6,8 @@
 var express = require('express');
 var models = require("./models/questions.js");
 require('express-resource');
+
+var _ = require("underscore");
     
 var app = express();
 
@@ -60,6 +62,31 @@ app.get('/contact', function(req, res){
 app.get('/survey', function(req, res){
   res.render('survey', {
     title: 'Survey', questions: models.questions
+  });
+});
+
+app.post('/survey', function(req, res){
+    
+  var efficacyScore = 0;
+  var threatScore = 0;
+  
+  _.each(req.body, function(item){
+    var qNum = item.split(",")[0];
+    var qVal = parseInt(item.split(",")[1]);
+    
+    var question = _.select(models.questions, function(q){ return q.Number == qNum; })[0];
+    
+    if (question.Dimension == models.dimension.TreatmentEfficacy || question.Dimension == models.dimension.PersonalEfficacy){
+        efficacyScore += qVal;
+    }
+    
+    if (question.Dimension == models.dimension.Severity || question.Dimension == models.dimension.Vulnerability){
+        threatScore += qVal;
+    }
+  });  
+  
+  res.render('result', {    
+    title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore
   });
 });
 

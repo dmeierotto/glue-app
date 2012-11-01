@@ -1,18 +1,18 @@
 extends layout
 
-
-
 block content
     
     h1 This is the survey  
+    form(method="post")
+        div#survey
+            each question in questions
+                div.question
+                    p= question.Description
+                    div
+                        each answer in question.Answers    
+                            label
+                                input(type="radio", name="question_#{question.Number}", id="question_#{question.Number}_#{answer.value}", value="#{question.Number},#{answer.value}")
+                                = answer.label
 
-    div#survey
-        each question in questions
-            div.question
-                p= question.Description
-                div
-                    each answer in question.Answers    
-                        label
-                            input(type="radio", name="question_#{question.Number}", id="question_#{question.Number}_#{answer.value}")
-                            = answer.label
+        input(type="Submit", value="Submit")
                     
