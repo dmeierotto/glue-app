@@ -104,6 +104,6 @@ app.post('/survey', function(req, res){
 
 
 //start the http server
-app.listen(process.env.C9_PORT);
+app.listen(process.env.PORT || process.env.C9_PORT);
 
 
