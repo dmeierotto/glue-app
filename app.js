@@ -5,6 +5,7 @@
 
 var express = require('express');
 var models = require("./models/questions.js");
+var request = require('request');
 
 var _ = require("underscore");
     
@@ -54,9 +55,32 @@ app.get('/adherence', function(req, res){
 
 app.get('/contact', function(req, res){
   res.render('contact', {
-    title: 'Contact'
+    title: 'Contact', sent: false
   });
 });
+
+app.post('/contact', function(req, res){
+    
+    var API_KEY = "key-3gfkfsa60ooc38kuogkty1eq432pj7z4";
+            
+    var Mailgun = require('mailgun').Mailgun;
+
+    var mg = new Mailgun(API_KEY);
+    
+    mg.sendText(req.body.email, ['dan.meierotto@gmail.com'],
+      'Info request from glue',
+      "Practice/name: " + req.body.name + "; Message: " + req.body.name,
+      'req.body.email', {},
+      function(err) {
+        if (err) console.log('Oh noes: ' + err);
+        else     console.log('Railgun mail sent success');
+    });
+        
+    res.render('contact', {    
+        title: 'Contact', sent : true
+    });    
+});
+
 
 app.get('/survey', function(req, res){
   res.render('survey', {

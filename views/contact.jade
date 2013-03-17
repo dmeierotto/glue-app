@@ -3,19 +3,25 @@ extends layout
 block content
     
     h1 Let's discuss what Glue can do for you!
-    section.css-table
-      section.one-column
-        section.cell.contact-form
-            h2 Please Contact Me
-            p Fill out the form below and press send. We will contact you as to how we can help you and your patients            
-            div
-                label Your Name or Practice
-                    input[type=text]
-            div
-                label Your email address
-                    input[type=text]    
-            div
-                label Message
-                    textarea(rows=10,cols=100)
-            div
-                button Send          
+    
+    if sent
+        div
+            Your information has been sent to Motto Labs.  We will be getting back to you.  Thanks!
+    else    
+        form(method="post")
+            section.css-table
+              section.one-column
+                section.cell.contact-form
+                    h2 Please Contact Me
+                    p Fill out the form below and press send. We will contact you as to how we can help you and your patients            
+                    div
+                        label Your Name or Practice
+                            input(type='text', id="name", name="name")
+                    div
+                        label Your email address
+                            input(id='email',type='text',value='',placeholder='someone@somewhere.com',name='email')
+                    div
+                        label Message
+                            textarea(rows=10,cols=100,name='message',id='message')
+                    div
+                        button Send          
