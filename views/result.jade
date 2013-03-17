@@ -8,6 +8,9 @@ block content
     
     p= efficacyScore
 
+    p= threatMessage
+    p= efficacyMessage
+
     div#chart_div
 
     script(type="text/javascript", src="https://www.google.com/jsapi")
@@ -39,8 +42,8 @@ block content
                 width: 400,
                 height: 400,
                 chartArea: { width: 300, height: 300},
-                hAxis: { title: 'efficacy', minValue: 0, maxValue: 100, gridlines: { count: 3 } },
-                vAxis: { title: 'vulnerability', minValue: 0, maxValue: 100, gridlines: { count: 3 } },
+                hAxis: { title: 'efficacy', minValue: 0, maxValue: 56, gridlines: { count: 3 } },
+                vAxis: { title: 'vulnerability', minValue: 0, maxValue: 63, gridlines: { count: 3 } },
                 legend: 'none'
             };
 

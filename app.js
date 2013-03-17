@@ -5,7 +5,6 @@
 
 var express = require('express');
 var models = require("./models/questions.js");
-require('express-resource');
 
 var _ = require("underscore");
     
@@ -69,6 +68,8 @@ app.post('/survey', function(req, res){
     
   var efficacyScore = 0;
   var threatScore = 0;
+  var threatMessage = "You do not believe there is any threat to your health";
+  var efficacyMessage = "You do not believe that you will be able to carry out the RP";
   
   _.each(req.body, function(item){
     var qNum = item.split(",")[0];
@@ -82,11 +83,22 @@ app.post('/survey', function(req, res){
     
     if (question.Dimension == models.dimension.Severity || question.Dimension == models.dimension.Vulnerability){
         threatScore += qVal;
-    }
+    }    
+    
+    if (threatScore > 40)
+        threatMessage = "You fully believe the danger posed by your health issue";
+    else if (threatScore > 25)
+        threatMessage = "It appears that you believe there is a threat, but that it is not great. You should speak with your doctor to fully understand the consequences";
+    
+    if (efficacyScore > 40)
+        efficacyMessage = "You fully believe that you wil be able to carry out the RP";
+    else if (efficacyScore > 25)
+        efficacyMessage = "It appears that you believe that you might be able to carry out the RP. You should speak with your doctor to find out ways to motivate you or to make the RP easier for you.";
+   
   });  
   
   res.render('result', {    
-    title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore
+    title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage 
   });
 });
 
