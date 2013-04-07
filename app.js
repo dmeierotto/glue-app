@@ -140,7 +140,7 @@ app.post('/survey', function(req, res){
   
   var resultsObj = { efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage };
   
-  client.hset("glue-results", "result-" + Date.now(), resultsObj, redis.print);
+  client.hset("glue-results", "result-" + Date.now(), resultsObj, client.print);
   
   res.render('result', {    
     title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage 
