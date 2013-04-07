@@ -121,21 +121,19 @@ app.post('/survey', function(req, res){
    
   });  
   
-  var redis;
+  var client;
   if (process.env.REDISTOGO_URL) {
    // inside if statement
     var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-    redis = require("redis").createClient(rtg.port, rtg.hostname);
+    client = require("redis").createClient(rtg.port, rtg.hostname);
 
-    redis.auth(rtg.auth.split(":")[1]); 
+    client.auth(rtg.auth.split(":")[1]); 
   } 
   else 
   {
-     redis = require("redis").createClient();
+     client = require("redis").createClient();
   }
-  
-  var client = redis.createClient();
-  
+      
   client.on("error", function (err) {
         console.log("Error " + err);
   });
@@ -143,7 +141,6 @@ app.post('/survey', function(req, res){
   var resultsObj = { efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage };
   
   client.hset("glue-results", "result-" + Date.now(), resultsObj, redis.print);
-
   
   res.render('result', {    
     title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage 
