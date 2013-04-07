@@ -142,6 +142,14 @@ app.post('/survey', function(req, res){
   
   client.hset("glue-results", "result-" + Date.now(), resultsObj, client.print);
   
+  client.hkeys("glue-results", function (err, replies) {
+        console.log(replies.length + " replies:");
+        replies.forEach(function (reply, i) {
+            console.log("    " + i + ": " + reply);
+        });
+        client.quit();
+    });
+  
   res.render('result', {    
     title: 'Survey', efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage 
   });
