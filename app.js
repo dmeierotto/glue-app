@@ -146,6 +146,11 @@ app.post('/survey', function(req, res){
         console.log(replies.length + " replies:");
         replies.forEach(function (reply, i) {
             console.log("    " + i + ": " + reply);
+            
+            client.hget("glue-results", reply, function(errV, value){
+                console.log(reply + ": EfficacyScore" + value.efficacyScore);
+                console.log(reply + ": ThreatScore" + value.threatScore);
+            }); 
         });
         client.quit();
     });
