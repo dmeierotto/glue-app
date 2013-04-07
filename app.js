@@ -141,22 +141,20 @@ app.post('/survey', function(req, res){
   var resultsObj = { efficacyScore : efficacyScore, threatScore : threatScore, threatMessage : threatMessage, efficacyMessage : efficacyMessage };
   
   console.log(JSON.stringify(resultsObj));
-  
-  client.hdel("glue-results")
-  
+      
   client.hset("glue-results", "result-" + Date.now(), JSON.stringify(resultsObj) , client.print);
   
   client.hkeys("glue-results", function (err, replies) {
         console.log(replies.length + " replies:");
         replies.forEach(function (reply, i) {
             console.log("    " + i + ": " + reply);
-            
-            client.hget("glue-results", reply, function(errV, value){
-                console.log("recieved:"+value)
+            client.hdel("glue-results", reply)
+            //client.hget("glue-results", reply, function(errV, value){
+            //    console.log("recieved:"+value)
                 //var res = JSON.parse(value);
                 //console.log(reply + ": EfficacyScore:" + res.efficacyScore);
                 //console.log(reply + ": ThreatScore:" + res.threatScore);
-            }); 
+            //}); 
         });
         client.quit();
     });
