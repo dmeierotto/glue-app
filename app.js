@@ -148,13 +148,13 @@ app.post('/survey', function(req, res){
         console.log(replies.length + " replies:");
         replies.forEach(function (reply, i) {
             console.log("    " + i + ": " + reply);
-            client.hdel("glue-results", reply)
-            //client.hget("glue-results", reply, function(errV, value){
-            //    console.log("recieved:"+value)
-                //var res = JSON.parse(value);
-                //console.log(reply + ": EfficacyScore:" + res.efficacyScore);
-                //console.log(reply + ": ThreatScore:" + res.threatScore);
-            //}); 
+            //client.hdel("glue-results", reply)
+            client.hget("glue-results", reply, function(errV, value){
+                console.log("recieved:"+value)
+                var res = JSON.parse(value);
+                console.log(reply + ": EfficacyScore:" + res.efficacyScore);
+                console.log(reply + ": ThreatScore:" + res.threatScore);
+            }); 
         });
         client.quit();
     });
