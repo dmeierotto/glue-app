@@ -142,6 +142,8 @@ app.post('/survey', function(req, res){
   
   console.log(JSON.stringify(resultsObj));
   
+  client.hdel("glue-results")
+  
   client.hset("glue-results", "result-" + Date.now(), JSON.stringify(resultsObj) , client.print);
   
   client.hkeys("glue-results", function (err, replies) {
